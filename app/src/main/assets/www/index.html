@@ -1,1 +1,104 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Notes App</title><link rel="stylesheet" href="css/style.css"></head><body><div class="container"><header class="header"><h1>📝 Catatanku</h1></header><div class="add-note"><textarea id="note-input" placeholder="Tulis catatan baru di sini..."></textarea><button id="add-btn" class="btn">Tambah Catatan</button></div><div id="stats" class="stats"></div><div id="notes-list" class="notes-list"></div><footer class="footer-actions"><button id="export-btn" class="btn btn-small btn-export">📤 Ekspor</button><label class="btn btn-small btn-import">📥 Impor <input type="file" id="import-input" accept=".json" style="display:none;"></label><button id="clear-all-btn" class="btn btn-small btn-delete">🗑️ Hapus Semua</button></footer></div><script src="js/notes.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App - Enhanced</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📝 Catatanku</h1>
+            <p class="subtitle">Aplikasi catatan pintar dengan fitur lengkap</p>
+        </header>
+
+        <!-- Search and Filter Section -->
+        <div class="controls-section">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="🔍 Cari catatan..." class="search-input">
+            </div>
+            
+            <div class="filter-container">
+                <select id="category-select" class="filter-select">
+                    <option value="all">📂 Semua Kategori</option>
+                    <option value="personal">👤 Personal</option>
+                    <option value="work">💼 Kerja</option>
+                    <option value="study">📚 Belajar</option>
+                    <option value="ideas">💡 Ide</option>
+                    <option value="other">📋 Lainnya</option>
+                </select>
+                
+                <select id="sort-select" class="filter-select">
+                    <option value="newest">📅 Terbaru</option>
+                    <option value="oldest">📅 Terlama</option>
+                    <option value="alphabetical">🔤 A-Z</option>
+                    <option value="category">📂 Kategori</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Add Note Section -->
+        <div class="add-note">
+            <div class="note-form">
+                <textarea id="note-input" placeholder="Tulis catatan baru di sini... (Ctrl+Enter untuk menyimpan)" rows="4"></textarea>
+                
+                <div class="form-controls">
+                    <div class="form-row">
+                        <select id="category-select-form" class="form-select">
+                            <option value="other">📋 Lainnya</option>
+                            <option value="personal">👤 Personal</option>
+                            <option value="work">💼 Kerja</option>
+                            <option value="study">📚 Belajar</option>
+                            <option value="ideas">💡 Ide</option>
+                        </select>
+                        
+                        <select id="priority-select" class="form-select">
+                            <option value="normal">⚪ Normal</option>
+                            <option value="medium">🟡 Sedang</option>
+                            <option value="high">🔴 Tinggi</option>
+                        </select>
+                    </div>
+                    
+                    <button id="add-btn" class="btn btn-primary">✅ Tambah Catatan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div id="stats" class="stats"></div>
+
+        <!-- Notes List -->
+        <div id="notes-list" class="notes-list"></div>
+
+        <!-- Footer Actions -->
+        <footer class="footer-actions">
+            <div class="action-group">
+                <button id="export-btn" class="btn btn-small btn-export">📤 Ekspor</button>
+                <label class="btn btn-small btn-import">
+                    📥 Impor 
+                    <input type="file" id="import-input" accept=".json" style="display:none;">
+                </label>
+            </div>
+            <div class="action-group">
+                <button id="clear-all-btn" class="btn btn-small btn-delete">🗑️ Hapus Semua</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Connect category selects
+        document.addEventListener('DOMContentLoaded', () => {
+            const categorySelect = document.getElementById('category-select');
+            const categorySelectForm = document.getElementById('category-select-form');
+            
+            // Sync the form category select with the main category select
+            if (categorySelectForm) {
+                window.categorySelect = categorySelectForm;
+            }
+        });
+    </script>
+    <script src="js/notes.js"></script>
+</body>
+</html>
+
